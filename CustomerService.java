@@ -1,0 +1,3 @@
+package com.hotel.booking.service;
+import com.hotel.booking.dao.CustomerDAO; import com.hotel.booking.model.Customer; import java.sql.SQLException; import java.util.List;
+public class CustomerService {private final CustomerDAO dao=new CustomerDAO(); public Customer add(String name,String phone,String email)throws SQLException {if(name==null||name.isBlank()||phone==null||phone.isBlank())throw new IllegalArgumentException("Name and phone are required.");return dao.add(new Customer(name.trim(),phone.trim(),email==null?"":email.trim()));} public List<Customer> all()throws SQLException{return dao.all();}public List<Customer> search(String q)throws SQLException{return dao.search(q);}}
